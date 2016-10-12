@@ -24,7 +24,7 @@ function setup() {
 
 function draw() {
   background(100)
-  stroke(255,70)
+  stroke(255,100)
 
   translate(width/2,height/2)
   rotate(-90)
@@ -40,7 +40,9 @@ function draw() {
   var r1=planets[0].radius*r,
       r2=planets[1].radius*r;
 
-  if (angle <= 360) myLines.push(myLine)
+  if (angle <= 360/3) {
+    myLines.push(myLine);
+  }
   myLines.forEach(function(L,i){
     line(L.x0*r1,L.y0*r1,L.x1*r2,L.y1*r2)
   })
@@ -52,10 +54,5 @@ function draw() {
   fill('#0080FF')
   ellipse(points[1].x*r2,points[1].y*r2,planets[1].size)
   
-  angle++;
-  if (angle >= 360) {
-    angle = 0;
-    // noLoop();
-    // myLines = []
-  }
+  angle = angle+1;
 }
